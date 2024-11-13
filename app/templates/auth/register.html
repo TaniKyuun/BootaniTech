@@ -1,0 +1,214 @@
+{% extends "base.html" %}
+{% block header %}
+  <div class="myHeader" id="myHeader">
+    <div class="logo-container">
+      <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             width="48px"
+             height="40px"
+             viewBox="50 0 150 170"
+             fill="none">
+          <path d="M108.067 16.8026C113.652 11.1571 119.091 5.35577 124.959 0C129.825 5.42261 135.278 10.2771 140.308 15.5409C150.649 25.9405 160.628 36.7245 169.772 48.1991C173.114 52.1651 176.063 56.4347 178.979 60.7182C186.702 72.1121 192.838 85.0099 194.3 98.8352C195.915 115.237 190.554 131.995 180.503 144.957C171.743 156.473 159.205 165.026 145.338 169.123C139.656 170.775 133.766 171.554 127.878 171.986C127.828 162.372 127.881 152.76 127.85 143.146C127.853 141.381 127.811 139.604 128.062 137.852C128.803 128.992 134.156 121.152 140.776 115.51C147.783 110.037 156.988 107.009 165.858 107.962C156.509 111.179 147.683 116.529 141.258 124.124C138.835 127.163 136.821 130.619 135.827 134.398C144.057 132.58 152.15 129.987 160.556 129.07C153.894 134.033 147.165 139.105 139.442 142.325C138.509 142.809 137.25 142.965 136.779 144.035C144.577 144.104 152.529 142.291 159.16 138.069C163.92 135.019 167.78 130.655 170.434 125.678C173.749 119.144 176.344 112.159 180.87 106.313C181.995 104.709 183.497 103.367 184.377 101.598C180.004 100.977 175.623 100.25 171.192 100.375C161.77 100.136 152.404 102.439 143.89 106.397C135.598 110.535 129.031 117.674 124.948 125.929C122.7 121.985 120.25 118.103 117.047 114.858C112.39 109.92 106.46 106.249 100.08 103.988C89.0368 99.796 76.8297 99.5398 65.2965 101.576C68.9896 106.436 72.4961 111.466 75.0138 117.053C77.8323 123.261 80.6369 129.742 85.7587 134.443C93.3955 141.199 103.798 144.581 113.936 144.032C112.922 143.297 111.683 143.029 110.557 142.531C102.971 139.278 96.0163 134.652 89.7916 129.254C91.8693 129.276 93.9163 129.647 95.93 130.129C102.029 131.371 108.028 133.047 114.078 134.499C111.354 125.645 104.26 118.949 96.668 114.059C92.5043 111.641 88.2013 109.371 83.5836 107.951C93.3899 106.851 103.572 110.455 110.683 117.27C117.637 123.612 122.102 132.822 121.985 142.311C121.873 152.195 122.149 162.096 121.837 171.972C107.29 171.223 92.7048 166.527 81.2691 157.32C66.2825 145.38 56.114 127.054 55.2757 107.778C54.6073 94.8023 58.4006 81.8989 64.6922 70.6332C68.0232 64.3333 71.9836 58.3759 76.3116 52.7221C85.8785 39.8883 96.7822 28.1296 108.067 16.8026ZM124.555 64.414C120.344 69.7726 116.437 75.4319 113.585 81.6455C111.891 85.5224 110.46 89.7641 111.078 94.0476C111.527 98.3701 114.078 102.342 117.606 104.82C121.676 107.592 127.304 107.547 131.529 105.143C135.988 102.473 138.776 97.3591 138.757 92.176C138.924 88.65 137.824 85.2216 136.423 82.0326C133.593 75.6102 129.329 69.9703 125.118 64.4084C124.976 64.4112 124.697 64.4112 124.555 64.414Z" fill="#AEF694" />
+        </svg>
+        <p class="logo-text">BootaniTek</p>
+      </div>
+    </div>
+    <div class="nav" id="myTopnav">
+      <div class="hamburger-menu" onclick="toggleNavbar()">
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+        <div class="burger-line"></div>
+      </div>
+      <div class="nav-item-container">
+        <ul class="nav-items">
+          {% if current_user.is_authenticated %}
+            <li>
+              <a class="nav-link" href="{{ url_for("main.index") }}">
+                <div class="icon-text">
+                  <span class="material-icons">home</span> <span>Home</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="nav-link"
+                 href="{{ url_for("main.index", _anchor='anchor-about') }}">
+                <div class="icon-text">
+                  <span class="material-icons">info</span>
+                  <span>About</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="nav-link"
+                 href="{{ url_for("main.index", _anchor='anchor-contact') }}">
+                <div class="icon-text">
+                  <span class="material-icons">contacts</span>
+                  <span>Contact</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="nav-link" href="/submit_sample">
+                <div class="icon-text">
+                  <span class="material-icons">upload_file</span>
+                  <span>Submit Sample</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <div class="profile-container">
+                <div class="profile-image">
+                  <span id="profile-picture" class="material-icons">account_circle</span>
+                </div>
+                <ul id="profile-selection" class="profile-selection">
+                  <li>
+                    <a href="#">
+                      <div class="icon-text">
+                        <span class="material-icons">dashboard</span>
+                        <span>Dashboard</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <div class="icon-text">
+                        <span class="material-icons">manage_accounts</span>
+                        <span>Profile</span>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="/logout">
+                      <div class="icon-text">
+                        <span class="material-icons">logout</span>
+                        <span>Logout</span>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          {% else %}
+            <li>
+              <a class="nav-link" href="{{ url_for("main.index") }}">
+                <div class="icon-text">
+                  <span class="material-icons">home</span>
+                  <span>Home</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="nav-link"
+                 href="{{ url_for("main.index", _anchor='anchor-about') }}">
+                <div class="icon-text">
+                  <span class="material-icons">info</span> <span>About</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a class="nav-link"
+                 href="{{ url_for("main.index", _anchor='anchor-contact') }}">
+                <div class="icon-text">
+                  <span class="material-icons">contacts</span>
+                  <span>Contact</span>
+                </div>
+              </a>
+            </li>
+            <li>
+              <div class="login-container">
+                <a class="login-link" href="/login">
+                  <div class="icon-text">
+                    <span class="material-icons">login</span>
+                    <span>Login</span>
+                  </div>
+                </a>
+              </div>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endblock header %}
+{% block content %}
+  <div class="page-container">
+    <div class="auth-container">
+      <h1>Sign Up</h1>
+      <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+          {{ form.firstname.label }}
+          <br>
+          {{ form.firstname(size=32) }}
+          <br>
+          {% for error in form.firstname.errors %}<span>[{{ error }}]</span>{% endfor %}
+        </p>
+        <p>
+          {{ form.lastname.label }}
+          <br>
+          {{ form.lastname(size=32) }}
+          <br>
+          {% for error in form.lastname.errors %}<span>[{{ error }}]</span>{% endfor %}
+        </p>
+        <p>
+          {{ form.email.label }}
+          <br>
+          {{ form.email(size=32) }}
+          <br>
+          {% for error in form.email.errors %}<span>[{{ error }}]</span>{% endfor %}
+        </p>
+        <p>
+          {{ form.password.label }}
+          <br>
+          {{ form.password(size=32) }}
+          <br>
+          {% for error in form.password.errors %}<span>[{{ error }}]</span>{% endfor %}
+        </p>
+        <p>
+          {{ form.password2.label }}
+          <br>
+          {{ form.password2(size=32) }}
+          <br>
+          {% for error in form.password2.errors %}<span>[{{ error }}]</span>{% endfor %}
+        </p>
+        <p>
+          {{ form.in_company.label }}
+          <br>
+          {{ form.in_company(id='in_company') }}
+          <br>
+          {% for error in form.in_company.errors %}<span>[{{ error }}]</span>{% endfor %}
+        </p>
+        <p id="company_name">
+          {{ form.company_name.label }}
+          <br>
+          {{ form.company_name }}
+          <br>
+          {% for error in form.company_name.errors %}<span>[{{ error }}]</span>{% endfor %}
+        </p>
+        <p>{{ form.submit() }}</p>
+      </form>
+      <p>
+        Are you registered? <br> <a href="/login">Log in here</a>.
+      </p>
+    </div>
+  </div>
+  <script type="text/javascript">
+    window.onload = function() {
+      var inCompany = document.getElementById('in_company');
+      var companyName = document.getElementById('company_name');
+      if (inCompany.checked) {
+        companyName.style.display = 'block';
+      } else {
+        companyName.style.display = 'none';
+      }
+  
+      inCompany.addEventListener('change', function() {
+        if (this.checked) {
+          companyName.style.display = 'block';
+        } else {
+          companyName.style.display = 'none';
+        }
+      });
+    };
+  </script>
+{% endblock %}

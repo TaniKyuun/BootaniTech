@@ -1,0 +1,337 @@
+{% extends "base.html" %} {% block title %} PestiSafe | Home {% endblock title
+%} {% block header %}
+<div class="myHeader" id="myHeader">
+  <div class="logo-container">
+    <div class="logo">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="48px"
+        height="40px"
+        viewBox="50 0 150 170"
+        fill="none"
+      >
+        <path
+          d="M108.067 16.8026C113.652 11.1571 119.091 5.35577 124.959 0C129.825 5.42261 135.278 10.2771 140.308 15.5409C150.649 25.9405 160.628 36.7245 169.772 48.1991C173.114 52.1651 176.063 56.4347 178.979 60.7182C186.702 72.1121 192.838 85.0099 194.3 98.8352C195.915 115.237 190.554 131.995 180.503 144.957C171.743 156.473 159.205 165.026 145.338 169.123C139.656 170.775 133.766 171.554 127.878 171.986C127.828 162.372 127.881 152.76 127.85 143.146C127.853 141.381 127.811 139.604 128.062 137.852C128.803 128.992 134.156 121.152 140.776 115.51C147.783 110.037 156.988 107.009 165.858 107.962C156.509 111.179 147.683 116.529 141.258 124.124C138.835 127.163 136.821 130.619 135.827 134.398C144.057 132.58 152.15 129.987 160.556 129.07C153.894 134.033 147.165 139.105 139.442 142.325C138.509 142.809 137.25 142.965 136.779 144.035C144.577 144.104 152.529 142.291 159.16 138.069C163.92 135.019 167.78 130.655 170.434 125.678C173.749 119.144 176.344 112.159 180.87 106.313C181.995 104.709 183.497 103.367 184.377 101.598C180.004 100.977 175.623 100.25 171.192 100.375C161.77 100.136 152.404 102.439 143.89 106.397C135.598 110.535 129.031 117.674 124.948 125.929C122.7 121.985 120.25 118.103 117.047 114.858C112.39 109.92 106.46 106.249 100.08 103.988C89.0368 99.796 76.8297 99.5398 65.2965 101.576C68.9896 106.436 72.4961 111.466 75.0138 117.053C77.8323 123.261 80.6369 129.742 85.7587 134.443C93.3955 141.199 103.798 144.581 113.936 144.032C112.922 143.297 111.683 143.029 110.557 142.531C102.971 139.278 96.0163 134.652 89.7916 129.254C91.8693 129.276 93.9163 129.647 95.93 130.129C102.029 131.371 108.028 133.047 114.078 134.499C111.354 125.645 104.26 118.949 96.668 114.059C92.5043 111.641 88.2013 109.371 83.5836 107.951C93.3899 106.851 103.572 110.455 110.683 117.27C117.637 123.612 122.102 132.822 121.985 142.311C121.873 152.195 122.149 162.096 121.837 171.972C107.29 171.223 92.7048 166.527 81.2691 157.32C66.2825 145.38 56.114 127.054 55.2757 107.778C54.6073 94.8023 58.4006 81.8989 64.6922 70.6332C68.0232 64.3333 71.9836 58.3759 76.3116 52.7221C85.8785 39.8883 96.7822 28.1296 108.067 16.8026ZM124.555 64.414C120.344 69.7726 116.437 75.4319 113.585 81.6455C111.891 85.5224 110.46 89.7641 111.078 94.0476C111.527 98.3701 114.078 102.342 117.606 104.82C121.676 107.592 127.304 107.547 131.529 105.143C135.988 102.473 138.776 97.3591 138.757 92.176C138.924 88.65 137.824 85.2216 136.423 82.0326C133.593 75.6102 129.329 69.9703 125.118 64.4084C124.976 64.4112 124.697 64.4112 124.555 64.414Z"
+          fill="#AEF694"
+        />
+      </svg>
+      <p class="logo-text">BootaniTek</p>
+    </div>
+  </div>
+  <div class="nav" id="myTopnav">
+    <div class="hamburger-menu" onclick="toggleNavbar()">
+      <div class="burger-line"></div>
+      <div class="burger-line"></div>
+      <div class="burger-line"></div>
+    </div>
+    <div class="nav-item-container">
+      <ul class="nav-items">
+        {% if current_user.is_authenticated %}
+        <li>
+          <a class="nav-link" href="#anchor-home">
+            <div class="icon-text">
+              <span class="material-icons">home</span>
+              <span>Home</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" href="#anchor-about">
+            <div class="icon-text">
+              <span class="material-icons">info</span>
+              <span>About</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" href="#anchor-contact">
+            <div class="icon-text">
+              <span class="material-icons">contacts</span>
+              <span>Contact</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" href="/submit_sample">
+            <div class="icon-text">
+              <span class="material-icons">upload_file</span>
+              <span>Services</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <div class="profile-container">
+            <div class="profile-image">
+              <span id="profile-picture" class="material-icons"
+                >account_circle</span
+              >
+            </div>
+            <ul id="profile-selection" class="profile-selection">
+              <li>
+                <a href="#">
+                  <div class="icon-text">
+                    <span class="material-icons">dashboard</span>
+                    <span>Dashboard</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <div class="icon-text">
+                    <span class="material-icons">manage_accounts</span>
+                    <span>Profile</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="/logout">
+                  <div class="icon-text">
+                    <span class="material-icons">logout</span>
+                    <span>Logout</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </li>
+        {% else %}
+        <li>
+          <a class="nav-link" href="#anchor-home">
+            <div class="icon-text">
+              <span class="material-icons">home</span>
+              <span>Home</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" href="#anchor-about">
+            <div class="icon-text">
+              <span class="material-icons">info</span>
+              <span>About</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link" href="#anchor-contact">
+            <div class="icon-text">
+              <span class="material-icons">contacts</span>
+              <span>Contact</span>
+            </div>
+          </a>
+        </li>
+        <li>
+          <div class="login-container">
+            <a class="login-link" href="/login">
+              <div class="icon-text">
+                <span class="material-icons">login</span>
+                <span>Login</span>
+              </div>
+            </a>
+          </div>
+        </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</div>
+{% endblock header %} {% block content %}
+<div id="anchor-home" class="hero">
+  <div class="hero-logo">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="250"
+      height="212"
+      viewBox="0 0 250 212"
+      fill="none"
+    >
+      <path
+        d="M108.067 16.8026C113.652 11.1571 119.091 5.35577 124.959 0C129.825 5.42261 135.278 10.2771 140.308 15.5409C150.649 25.9405 160.628 36.7245 169.772 48.1991C173.114 52.1651 176.063 56.4347 178.979 60.7182C186.702 72.1121 192.838 85.0099 194.3 98.8352C195.915 115.237 190.554 131.995 180.503 144.957C171.743 156.473 159.205 165.026 145.338 169.123C139.656 170.775 133.766 171.554 127.878 171.986C127.828 162.372 127.881 152.76 127.85 143.146C127.853 141.381 127.811 139.604 128.062 137.852C128.803 128.992 134.156 121.152 140.776 115.51C147.783 110.037 156.988 107.009 165.858 107.962C156.509 111.179 147.683 116.529 141.258 124.124C138.835 127.163 136.821 130.619 135.827 134.398C144.057 132.58 152.15 129.987 160.556 129.07C153.894 134.033 147.165 139.105 139.442 142.325C138.509 142.809 137.25 142.965 136.779 144.035C144.577 144.104 152.529 142.291 159.16 138.069C163.92 135.019 167.78 130.655 170.434 125.678C173.749 119.144 176.344 112.159 180.87 106.313C181.995 104.709 183.497 103.367 184.377 101.598C180.004 100.977 175.623 100.25 171.192 100.375C161.77 100.136 152.404 102.439 143.89 106.397C135.598 110.535 129.031 117.674 124.948 125.929C122.7 121.985 120.25 118.103 117.047 114.858C112.39 109.92 106.46 106.249 100.08 103.988C89.0368 99.796 76.8297 99.5398 65.2965 101.576C68.9896 106.436 72.4961 111.466 75.0138 117.053C77.8323 123.261 80.6369 129.742 85.7587 134.443C93.3955 141.199 103.798 144.581 113.936 144.032C112.922 143.297 111.683 143.029 110.557 142.531C102.971 139.278 96.0163 134.652 89.7916 129.254C91.8693 129.276 93.9163 129.647 95.93 130.129C102.029 131.371 108.028 133.047 114.078 134.499C111.354 125.645 104.26 118.949 96.668 114.059C92.5043 111.641 88.2013 109.371 83.5836 107.951C93.3899 106.851 103.572 110.455 110.683 117.27C117.637 123.612 122.102 132.822 121.985 142.311C121.873 152.195 122.149 162.096 121.837 171.972C107.29 171.223 92.7048 166.527 81.2691 157.32C66.2825 145.38 56.114 127.054 55.2757 107.778C54.6073 94.8023 58.4006 81.8989 64.6922 70.6332C68.0232 64.3333 71.9836 58.3759 76.3116 52.7221C85.8785 39.8883 96.7822 28.1296 108.067 16.8026ZM124.555 64.414C120.344 69.7726 116.437 75.4319 113.585 81.6455C111.891 85.5224 110.46 89.7641 111.078 94.0476C111.527 98.3701 114.078 102.342 117.606 104.82C121.676 107.592 127.304 107.547 131.529 105.143C135.988 102.473 138.776 97.3591 138.757 92.176C138.924 88.65 137.824 85.2216 136.423 82.0326C133.593 75.6102 129.329 69.9703 125.118 64.4084C124.976 64.4112 124.697 64.4112 124.555 64.414Z"
+        fill="#AEF694"
+      />
+      <path
+        d="M1.70687 168.441C17.4232 168.118 33.1953 168.516 48.9256 168.143C50.6774 168.24 52.5156 167.861 54.2006 168.477C55.6544 169.014 56.3424 171.086 55.206 172.251C54.4401 173.214 53.1367 173.337 51.992 173.328C36.1169 173.362 20.2418 173.287 4.36665 173.328C3.06601 173.284 1.47849 173.412 0.587259 172.259C-0.565776 171.075 0.0692281 168.786 1.70687 168.441Z"
+        fill="#AEF694"
+      />
+      <path
+        d="M195.823 168.407C211.545 168.065 227.309 168.507 243.045 168.235C245.209 168.262 248.069 167.446 249.59 169.474C250.81 171.07 249.094 173.387 247.242 173.159C231.089 173.484 214.924 173.22 198.765 173.337C197.378 173.287 195.667 173.49 194.673 172.304C193.484 171.095 194.186 168.808 195.823 168.407Z"
+        fill="#AEF694"
+      />
+      
+    </svg>
+    <div class="hero-content">
+      <p>
+        &ldquo;BotaniTek Greenhouse Automation Solutions.&ldquo;
+        <br />
+        &ldquo;Precision. Automation. Growth.&ldquo;
+        <br />Customized greenhouses equipped with advanced<br /> automation to optimize plant growth and streamline operations
+      </p>
+    </div>
+    <div class="starter-container">
+      {% if current_user.is_authenticated %}
+      <a href="/submit_sample" class="btn-starter">
+        GET STARTED
+        <span class="btn-starter-icon">
+          <svg
+            width="15"
+            height="20"
+            viewBox="0 0 15 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M-0.000104904 1.00057L-0.000104904 19.0006C0.000466347 19.1828 0.0507298 19.3615 0.145273 19.5173C0.239817 19.673 0.37506 19.8001 0.536448 19.8848C0.697835 19.9694 0.879255 20.0085 1.06118 19.9977C1.2431 19.9869 1.41864 19.9267 1.5689 19.8236L14.5689 10.8236C15.1079 10.4506 15.1079 9.55257 14.5689 9.17857L1.5689 0.178574C1.41895 0.0743986 1.24333 0.0133079 1.0611 0.00193892C0.878874 -0.00943004 0.697017 0.0293576 0.535288 0.114088C0.373559 0.198818 0.238141 0.32625 0.143751 0.482538C0.0493612 0.638826 -0.000392914 0.817994 -0.000104904 1.00057Z"
+              fill="#111111"
+            />
+          </svg>
+        </span>
+      </a>
+      {% else %}
+      <a href="/register" class="btn-starter">
+        GET STARTED
+        <span class="btn-starter-icon">
+          <svg
+            width="15"
+            height="20"
+            viewBox="0 0 15 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M-0.000104904 1.00057L-0.000104904 19.0006C0.000466347 19.1828 0.0507298 19.3615 0.145273 19.5173C0.239817 19.673 0.37506 19.8001 0.536448 19.8848C0.697835 19.9694 0.879255 20.0085 1.06118 19.9977C1.2431 19.9869 1.41864 19.9267 1.5689 19.8236L14.5689 10.8236C15.1079 10.4506 15.1079 9.55257 14.5689 9.17857L1.5689 0.178574C1.41895 0.0743986 1.24333 0.0133079 1.0611 0.00193892C0.878874 -0.00943004 0.697017 0.0293576 0.535288 0.114088C0.373559 0.198818 0.238141 0.32625 0.143751 0.482538C0.0493612 0.638826 -0.000392914 0.817994 -0.000104904 1.00057Z"
+              fill="#111111"
+            />
+          </svg>
+        </span>
+      </a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+<div class="hero-wave">
+  <svg viewBox="0 0 1440 269" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M0 160L20 154.7C40 149 80 139 120 149.3C160 160 200 192 240 176C280 160 320 96 360 106.7C400 117 440 203 480 202.7C520 203 560 117 600 96C640 75 680 117 720 117.3C760 117 800 75 840 74.7C880 75 920 117 960 160C1000 203 1040 245 1080 261.3C1120 277 1160 267 1200 218.7C1240 171 1280 85 1320 80C1360 75 1400 149 1420 186.7L1440 224V0H1420C1400 0 1360 0 1320 0C1280 0 1240 0 1200 0C1160 0 1120 0 1080 0C1040 0 1000 0 960 0C920 0 880 0 840 0C800 0 760 0 720 0C680 0 640 0 600 0C560 0 520 0 480 0C440 0 400 0 360 0C320 0 280 0 240 0C200 0 160 0 120 0C80 0 40 0 20 0H0V160Z"
+      fill="#024223"
+    />
+  </svg>
+</div>
+<!-- About Start-->
+<!-- Welcome-->
+<section id="anchor-about" class="wrapper-welcome">
+  <div class="welcome-container">
+    <img
+      class="about-image"
+      src="{{ url_for('static', filename='img/Greenhouse.png') }}"
+      alt="#"
+      width="550"
+      height="400"
+    />
+    <div class="welcome-description">
+      <h2 class="section-title">Welcome</h2>
+      <br />
+      <p>
+        BotaniTek specializes in custom-built, fully automated greenhouses.
+        Innovative greenhouse automation solutions that optimize plant growth and streamline farming operations
+        Our solutions streamline greenhouse management, optimize growth conditions,
+        and promote sustainability. Explore our full range of automation services below.
+      </p>
+    </div>
+  </div>
+</section>
+<div class="hero-wave">
+  <svg viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M0 128H20C40 128 80 128 120 149.3C160 171 200 213 240 229.3C280 245 320 235 360 208C400 181 440 139 480 101.3C520 64 560 32 600 37.3C640 43 680 85 720 90.7C760 96 800 64 840 58.7C880 53 920 75 960 80C1000 85 1040 75 1080 90.7C1120 107 1160 149 1200 165.3C1240 181 1280 171 1320 149.3C1360 128 1400 96 1420 80L1440 64V0H1420C1400 0 1360 0 1320 0C1280 0 1240 0 1200 0C1160 0 1120 0 1080 0C1040 0 1000 0 960 0C920 0 880 0 840 0C800 0 760 0 720 0C680 0 640 0 600 0C560 0 520 0 480 0C440 0 400 0 360 0C320 0 280 0 240 0C200 0 160 0 120 0C80 0 40 0 20 0H0V128Z"
+      fill="#49874F"
+    />
+  </svg>
+</div>
+<!-- Vision -->
+<section class="wrapper-vision">
+  <div class="vision-container">
+    <div class="vision-description">
+      <h2 class="section-title">Vision</h2>
+      <br />
+      <p>
+        Our vision is to transform the future of agriculture by
+        leading the way in smart greenhouse solutions. We aim to
+        create a world where sustainable, efficient, and highly
+        automated greenhouse systems are accessible to growers
+        of all sizes, enhancing food security and promoting
+        environmentally responsible farming practices globally.
+      </p>
+    </div>
+    <img
+      class="about-image"
+      src="{{ url_for('static', filename='img/ModernGreenhouse.jpg') }}"
+      alt="#"
+      width="550"
+      height="400"
+    />
+  </div>
+</section>
+<div class="hero-wave">
+  <svg viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M0 192L20 208C40 224 80 256 120 234.7C160 213 200 139 240 117.3C280 96 320 128 360 144C400 160 440 160 480 138.7C520 117 560 75 600 74.7C640 75 680 117 720 117.3C760 117 800 75 840 85.3C880 96 920 160 960 192C1000 224 1040 224 1080 202.7C1120 181 1160 139 1200 112C1240 85 1280 75 1320 80C1360 85 1400 107 1420 117.3L1440 128V0H1420C1400 0 1360 0 1320 0C1280 0 1240 0 1200 0C1160 0 1120 0 1080 0C1040 0 1000 0 960 0C920 0 880 0 840 0C800 0 760 0 720 0C680 0 640 0 600 0C560 0 520 0 480 0C440 0 400 0 360 0C320 0 280 0 240 0C200 0 160 0 120 0C80 0 40 0 20 0H0V192Z"
+      fill="#6DAA65"
+    />
+  </svg>
+</div>
+<!-- Mission -->
+<section class="wrapper-mission">
+  <div class="mission-container">
+    <img
+      class="about-image"
+      src="{{ url_for('static', filename='img/built.avif') }}"
+      alt="#"
+      width="550"
+      height="400"
+    />
+    <div class="mission-description">
+      <h2 class="section-title">Mission</h2>
+      <br />
+      <p>
+        At BotaniTek, our mission is to design and construct high-quality,
+        custom-built greenhouses equipped with advanced automation systems.
+        We aim to optimize plant growth, enhance resource efficiency, and
+        streamline greenhouse operations through precise control of
+        irrigation, humidity, air regulation, and more. Our
+        innovative solutions reduce manual labor, promote sustainability,
+        and empower growers to achieve consistent and superior crop yields.
+      </p>
+    </div>
+  </div>
+</section>
+<div class="hero-wave">
+  <svg viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path
+      d="M0 224L24 229.3C48 235 96 245 144 213.3C192 181 240 107 288 85.3C336 64 384 96 432 112C480 128 528 128 576 149.3C624 171 672 213 720 192C768 171 816 85 864 80C912 75 960 149 1008 176C1056 203 1104 181 1152 149.3C1200 117 1248 75 1296 80C1344 85 1392 139 1416 165.3L1440 192V0H1416C1392 0 1344 0 1296 0C1248 0 1200 0 1152 0C1104 0 1056 0 1008 0C960 0 912 0 864 0C816 0 768 0 720 0C672 0 624 0 576 0C528 0 480 0 432 0C384 0 336 0 288 0C240 0 192 0 144 0C96 0 48 0 24 0H0V224Z"
+      fill="#90CC7B"
+    />
+  </svg>
+</div>
+<!-- About End-->
+<!--Contacts -->
+<section id="anchor-contact" class="wrapper-contact">
+  <div class="contact-container">
+    <div class="contact-description">
+      <h2 class="contact-title">Contact</h2>
+      <br />
+      <p>
+        bootanitek@agridomcorp.com
+        <br />
+        <br />
+        099-999-9999
+        <br />
+        <br />
+        OFFICE ADDRESS
+        <br />
+        <br />
+        #1071 Brgy. Kaligayahan, Quirino Highway Novaliches Quezon City
+      </p>
+    </div>
+  </div>
+</section>
+<!-- Contacts End-->
+{% endblock content %}
