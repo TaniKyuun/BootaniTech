@@ -508,16 +508,16 @@ body {
 }
 
 /* Services */
-.collection {
+.collection { 
   display: grid;
   grid-auto-columns: max-content;
   grid-auto-flow: dense;
   grid-auto-rows: minmax(100px, auto);
   grid-gap: 25px;
+  grid-row-gap: 10px;
   grid-template-columns: repeat(4, 1fr);
-  
     margin: 60px auto;
-    max-width: 1500px;
+    max-width: 1100px;
 }
 
 .product {
@@ -549,4 +549,8 @@ body {
       font-size: 14px;
     }
   }
+}
+.product__price{
+  padding-top: 5%;
+  margin-top: 0%;
 }
